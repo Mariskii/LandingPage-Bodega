@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@theme {
+    --color-titles: #C9A84C;
+    --color-paragraph: #8C6E68;
+    --color-background: #120609;
+    --color-item-background: #1E0D12;
+    --color-subtitle: #F0E6DF;
+
+    --color-navbar-item: #9C7E78;
+
+    --color-button: #8B1A2E
+}
