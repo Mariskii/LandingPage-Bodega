@@ -1,0 +1,51 @@
+---
+export interface Props {
+    title?: string;
+    description?: string;
+    lang?: string;
+}
+
+const { 
+    title = 'BM Montserrat - Bodega de Vinos',
+    description = 'Descubre los mejores vinos de la D.O. Alicante. Bodega Montserrat, tradición y calidad desde 1920.',
+    lang = 'es'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- SEO Básico -->
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        
+        <!-- Open Graph -->
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        
+        <!-- Preconnect para fuentes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        
+        <!-- Slot para head adicional -->
+        <slot name="head" />
+    </head>
+    
+    <body class="font-work-sans bg-background text-white min-h-screen">
+        <!-- Navbar -->
+        <slot name="navbar" />
+        
+        <!-- Contenido principal -->
+        <main>
+            <slot />
+        </main>
+    </body>
+</html>

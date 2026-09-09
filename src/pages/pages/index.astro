@@ -1,5 +1,7 @@
 ---
 import "../../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro"; "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro"; "../components/NavBar.astro";
 ---
 
 <html lang="en">
@@ -12,8 +14,10 @@ import "../../styles/global.css";
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1 class="text-3xl font-bold underline font-work-sans">
-  			Hello world!
-		</h1>
+		<BaseLayout>
+    		<!-- Navbar -->
+    		<NavBar slot="navbar" />
+    
+		</BaseLayout>
 	</body>
 </html>
