@@ -1,29 +1,57 @@
 ---
 // src/components/ui/ProductCard.astro
+import { Image } from 'astro:assets';
 
 export interface Props {
     name: string; 
     category: string;         
     description: string;   
-    image?: string;        
+    image?: ImageMetadata | string; 
 }
 
 const { category, name, description, image } = Astro.props;
+
+// Normalizamos las variables en el script para no usar 'as' en el HTML
+const isAstroImage = typeof image === 'object' && image !== null;
+const astroImageSrc = isAstroImage ? (image as ImageMetadata) : null;
+const stringImageSrc = typeof image === 'string' ? image : null;
 ---
 
-<div class="bg-item-background border border-titles/10 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 h-full">
-    <div class="flex flex-col h-full">
-        <!-- Categoría -->
+<div class="bg-item-background border border-titles/10 overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col w-auto">
+    
+    <div class="relative w-fit md:w-full h-auto overflow-hidden group">
+    
+        {isAstroImage && astroImageSrc && (
+            <Image 
+                src={astroImageSrc} 
+                alt={name}
+                width={800}
+                quality="high"
+                class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105 block"
+            />
+        )}
+
+        {stringImageSrc && (
+            <img 
+                src={stringImageSrc} 
+                alt={name}
+                class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105 block"
+                loading="lazy"
+                decoding="async"
+            />
+        )}
+    </div>
+    
+    <!-- Contenido -->
+    <div class="p-6 flex flex-col flex-1 lg:w-full">
         <span class="font-work-sans text-titles text-sm uppercase tracking-wider mb-1">
             {category}
         </span>
         
-        <!-- Nombre -->
         <h3 class="font-fraunces text-2xl text-white mb-3">
             {name}
         </h3>
         
-        <!-- Descripción -->
         <p class="font-work-sans text-paragraph text-sm leading-relaxed flex-1">
             {description}
         </p>
