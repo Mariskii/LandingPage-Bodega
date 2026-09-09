@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://tubodega.com',
+  srcDir: './src/pages',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
