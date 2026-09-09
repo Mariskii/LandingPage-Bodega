@@ -23,7 +23,7 @@
             </a>
 
             <!-- Menú Desktop -->
-            <div class="hidden md:flex items-stretch gap-8">
+            <div class="hidden md:flex items-center gap-12">
                 <a href="/productos" class="font-work-sans text-paragraph hover:text-titles transition-colors">
                     PRODUCTOS
                 </a>
@@ -36,8 +36,9 @@
                 <a href="/do-alicante" class="font-work-sans text-paragraph hover:text-titles transition-colors">
                     D.O. ALICANTE
                 </a>
-                
-                <!-- Dropdown Idioma (Desktop) -->
+            </div>
+
+            <!-- Dropdown Idioma (Desktop) -->
                 <div class="relative" x-data="{ open: false }" @click.away="open = false">
                     <button 
                         @click="open = !open"
@@ -76,7 +77,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
 
             <!-- Botón Hamburguesa (Móvil) -->
             <button 
