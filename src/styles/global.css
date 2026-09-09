@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap');
+
+/* Custom colors */
+@theme {
+    --color-titles: #C9A84C;
+    --color-paragraph: #8C6E68;
+    --color-background: #120609;
+    --color-item-background: #1E0D12;
+    --color-subtitle: #F0E6DF;
+
+    --color-navbar-item: #9C7E78;
+
+    --color-button: #8B1A2E;
+
+
+    /* Fonts */
+    --font-fraunces: 'Fraunces', serif;
+    --font-work-sans: 'Work Sans', sans-serif
+}
