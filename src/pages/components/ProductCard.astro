@@ -1,0 +1,31 @@
+---
+// src/components/ui/ProductCard.astro
+
+export interface Props {
+    name: string; 
+    category: string;         
+    description: string;   
+    image?: string;        
+}
+
+const { category, name, description, image } = Astro.props;
+---
+
+<div class="bg-item-background border border-titles/10 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 h-full">
+    <div class="flex flex-col h-full">
+        <!-- Categoría -->
+        <span class="font-work-sans text-titles text-sm uppercase tracking-wider mb-1">
+            {category}
+        </span>
+        
+        <!-- Nombre -->
+        <h3 class="font-fraunces text-2xl text-white mb-3">
+            {name}
+        </h3>
+        
+        <!-- Descripción -->
+        <p class="font-work-sans text-paragraph text-sm leading-relaxed flex-1">
+            {description}
+        </p>
+    </div>
+</div>

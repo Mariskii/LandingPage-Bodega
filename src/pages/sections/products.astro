@@ -1,0 +1,49 @@
+---
+// src/components/sections/Products.astro
+import ProductCard from '../components/ProductCard.astro';
+
+// 📦 Lista de productos (fácil de añadir/quitar)
+const products = [
+    {
+        category: 'TINTO RESERVA · 2019',
+        name: 'Montserrat Selección',
+        description: 'Monastrell y Tempranillo de viñas viejas. Aromas de fruta negra madura, cuero y especias. 24 meses en barrica de roble francés.',
+        quote: 'Tres expresiones del mismo terroir, tres caracteres distintos.'
+    },
+    {
+        category: 'BLANCO FERMENTADO · 2022',
+        name: 'Clos Blanc',
+        description: 'Macabeo y Mersequera de cosecha tardía. Notas de melocotón, flores blancas y mineral fresco. Fermentado en barrica.',
+        quote: 'Tres expresiones del mismo terroir, tres caracteres distintos.'
+    },
+    {
+        category: 'ROSADO JOVEN · 2023',
+        name: 'Viña Rosada',
+        description: 'Garnacha de alta expresión. Frambuesa, fresa silvestre y pétalo de rosa. Fresco y estructurado para toda la mesa.',
+        quote: 'Tres expresiones del mismo terroir, tres caracteres distintos.'
+    },
+    // ➕ Añade más productos aquí fácilmente
+];
+---
+
+<section class="py-20 md:py-28 bg-background">
+    <div class="container mx-auto px-4">
+        
+        <!-- Título de la sección -->
+        <h2 class="font-fraunces text-3xl md:text-4xl lg:text-5xl text-titles text-center mb-16">
+            Nuestra <span class="text-white">colección</span>
+        </h2>
+        
+        <!-- Grid dinámico de productos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product) => (
+                <ProductCard 
+                    category={product.category}
+                    name={product.name}
+                    description={product.description}
+                />
+            ))}
+        </div>
+        
+    </div>
+</section>
