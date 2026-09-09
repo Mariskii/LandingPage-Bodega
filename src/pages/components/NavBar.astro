@@ -1,4 +1,6 @@
 ---
+import Logo from '../../../public/logo.svg';
+
 // src/components/common/Navbar.astro
  // Si usas astro-icon, o usa emojis
 
@@ -10,14 +12,9 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 md:h-20">
             
-            <!-- TO-DO: Cambiar por icon logo -->
-            <a href="/" class="flex items-center gap-2">
-                <span class="font-fraunces text-2xl font-bold text-titles">
-                    BM
-                </span>
-                <span class="hidden sm:block font-work-sans text-sm text-paragraph uppercase tracking-wider">
-                    MonTSERRAT
-                </span>
+            <a href="/" class="flex items-center gap-2 text-titles hover:opacity-80 transition-opacity" aria-label="Inicio - Bodega Montserrat">
+                <!-- Ajusta el ancho/alto según el diseño de tu navbar (ej. h-8 o h-10) -->
+                <Logo class="p-2 h-24 w-auto fill-current" />
             </a>
 
             <!-- Menú Desktop -->
