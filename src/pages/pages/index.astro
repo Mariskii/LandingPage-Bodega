@@ -1,7 +1,8 @@
 ---
 import "../../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro"; "../layouts/BaseLayout.astro";
-import NavBar from "../components/NavBar.astro"; "../components/NavBar.astro";
+import NavBar from "../components/NavBar.astro";
+import Welcome from "../sections/welcome.astro";
 ---
 
 <html lang="en">
@@ -18,6 +19,7 @@ import NavBar from "../components/NavBar.astro"; "../components/NavBar.astro";
     		<!-- Navbar -->
     		<NavBar slot="navbar" />
     
+			<Welcome />
 		</BaseLayout>
 	</body>
 </html>

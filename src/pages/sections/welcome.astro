@@ -1,0 +1,38 @@
+---
+// src/components/sections/Hero.astro
+---
+
+<section class="min-h-screen flex items-center relative overflow-hidden">
+    <!-- Imagen de fondo -->
+    <div class="absolute inset-0 z-0">
+        <img 
+            src="../../../public/images/welcome.webp" 
+            alt="Viñedos BM Montserrat"
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+        />
+        <!-- Capa oscura para legibilidad -->
+        <div class="absolute inset-0 bg-background/70"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl">
+            <h1 class="font-fraunces text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-titles leading-tight mb-6">
+                Vinos de la tierra,<br />
+                <span class="text-white">alma del tiempo.</span>
+            </h1>
+            
+            <p class="font-work-sans text-paragraph text-lg md:text-xl max-w-2xl mb-10">
+                Bodega familiar adscrita a la Denominación de Origen Alicante desde 1897.
+            </p>
+            
+            <a 
+                href="/productos" 
+                class="inline-block font-work-sans font-medium bg-titles text-background px-8 py-4 rounded-lg hover:bg-titles/90 transition-colors text-base md:text-lg"
+            >
+                DESCUBRIR NUESTROS VINOS →
+            </a>
+        </div>
+    </div>
+</section>
