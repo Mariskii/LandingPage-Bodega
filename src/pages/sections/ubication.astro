@@ -1,0 +1,88 @@
+---
+// src/components/sections/Location.astro
+import { Image } from 'astro:assets';
+import locationImage from '../../../public/images/exterior.webp'; // Asegúrate de ajustar la ruta de la imagen
+---
+
+<section id="ubication" class="py-20 md:py-28 bg-background">
+    <div class="container mx-auto bg-item-background border border-titles/10 overflow-hidden">
+        <div class="flex flex-col lg:flex-row-reverse items-stretch gap-0">
+            
+            <!-- Contenido / Texto (Derecha) -->
+            <div class="lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+                
+                <!-- Categoría / Subtítulo numerado -->
+                <span class="font-work-sans text-titles text-xs md:text-sm uppercase tracking-widest mb-4">
+                    UBICACIÓN
+                </span>
+                
+                <!-- Título -->
+                <h2 class="font-fraunces italic text-3xl md:text-4xl lg:text-5xl text-subtitle mb-6 leading-tight">
+                    En el corazón<br />del Rincón de Ademuz
+                </h2>
+                
+                <!-- Descripción -->
+                <div class="font-work-sans text-paragraph text-base md:text-lg space-y-4 mb-10">
+                    <p>
+                        Nuestras bodegas se sitúan a 850 metros de altitud, entre pinos y viñedos milenarios, en el municipio de Utiel, Valencia.
+                    </p>
+                    <p>
+                        El clima continental extremo —veranos cálidos e inviernos fríos— imprime en nuestros vinos una identidad única e irrepetible.
+                    </p>
+                </div>
+                
+                <!-- Bloque de Información de Contacto / Detalles -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-titles/10 font-work-sans text-sm text-paragraph">
+                    <div>
+                        <p class="font-medium text-subtitle mb-1">Dirección</p>
+                        <p>Camino de la Bodega, s/n</p>
+                        <p>46300 La Romana, Alicante</p>
+                    </div>
+                    
+                    <div>
+                        <p class="font-medium text-subtitle mb-1">Contacto</p>
+                        <p>+34 962 17 00 00</p>
+                        <p class="text-titles hover:underline cursor-pointer">visitas@bodegasmontserrat.com</p>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <p class="font-medium text-subtitle mb-1">Horario de visitas</p>
+                        <p>Lun–Vie: 9:00–18:00 | Sáb: 10:00–14:00</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Imagen con pin central (Izquierda) -->
+            <div class="lg:w-1/2 min-h-80 md:min-h-[500px] relative overflow-hidden group">
+                <Image 
+                    src={locationImage} 
+                    alt="Viñedos de Bodegas Montserrat en Utiel, Valencia"
+                    width={1000}
+                    height={1000}
+                    quality="high"
+                    class="w-full h-full object-cover absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+                />
+                
+                <!-- Overlay de tono oscuro -->
+                <div class="absolute inset-0 bg-background/30"></div>
+
+                <!-- Pin / Marcador de ubicación central -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center z-10 p-4">
+                    <div class="w-12 h-12 rounded-full border border-titles/60 bg-background/40 backdrop-blur-md flex items-center justify-center mb-3 shadow-lg group-hover:border-titles transition-colors">
+                        <!-- Icono SVG de pin/ubicación -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-titles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <circle cx="12" cy="12" r="8"></circle>
+                        </svg>
+                    </div>
+                    <span class="font-fraunces italic text-lg md:text-xl text-white drop-shadow-md">
+                        La Romana, Alicante
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
