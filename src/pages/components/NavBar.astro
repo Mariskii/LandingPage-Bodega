@@ -1,0 +1,171 @@
+---
+// src/components/common/Navbar.astro
+ // Si usas astro-icon, o usa emojis
+
+// Estado del menú móvil (se maneja con JavaScript)
+// Estado del dropdown de idiomas
+---
+
+<script src="/public/scripts/alpine.js" is:inline></script>
+
+<nav class="relative bg-background/95 backdrop-blur-sm border-b border-titles/10" x-data="{ mobileOpen: false, langOpen: false }">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 md:h-20">
+            
+            <!-- TO-DO: Cambiar por icon logo -->
+            <a href="/" class="flex items-center gap-2">
+                <span class="font-fraunces text-2xl font-bold text-titles">
+                    BM
+                </span>
+                <span class="hidden sm:block font-work-sans text-sm text-paragraph uppercase tracking-wider">
+                    MonTSERRAT
+                </span>
+            </a>
+
+            <!-- Menú Desktop -->
+            <div class="hidden md:flex items-stretch gap-8">
+                <a href="/productos" class="font-work-sans text-paragraph hover:text-titles transition-colors">
+                    PRODUCTOS
+                </a>
+                <a href="/ubicacion" class="font-work-sans text-paragraph hover:text-titles transition-colors">
+                    UBICACIÓN
+                </a>
+                <a href="/historia" class="font-work-sans text-paragraph hover:text-titles transition-colors">
+                    NUESTRA HISTORIA
+                </a>
+                <a href="/do-alicante" class="font-work-sans text-paragraph hover:text-titles transition-colors">
+                    D.O. ALICANTE
+                </a>
+                
+                <!-- Dropdown Idioma (Desktop) -->
+                <div class="relative" x-data="{ open: false }" @click.away="open = false">
+                    <button 
+                        @click="open = !open"
+                        class="flex items-center gap-1 font-work-sans text-paragraph hover:text-titles transition-colors"
+                    >
+                        <span>ES</span>
+                        <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    
+                    <!-- Dropdown menu -->
+                    <div 
+                        x-show="open"
+                        x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 scale-95"
+                        x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 scale-100"
+                        x-transition:leave-end="opacity-0 scale-95"
+                        class="absolute right-0 mt-2 w-32 bg-background/95 backdrop-blur-sm rounded-lg shadow-lg border border-titles/10 py-1"
+                        style="display: none;"
+                        :style="open ? 'display: block;' : 'display: none;'"
+                    >
+                        <a href="/es" class="block px-4 py-2 font-work-sans text-sm text-paragraph hover:text-titles hover:bg-titles/10 transition-colors">
+                            🇪🇸 Español
+                        </a>
+                        <a href="/fr" class="block px-4 py-2 font-work-sans text-sm text-paragraph hover:text-titles hover:bg-titles/10 transition-colors">
+                            🇫🇷 Français
+                        </a>
+                        <a href="/en" class="block px-4 py-2 font-work-sans text-sm text-paragraph hover:text-titles hover:bg-titles/10 transition-colors">
+                            🇬🇧 English
+                        </a>
+                        <a href="/va" class="block px-4 py-2 font-work-sans text-sm text-paragraph hover:text-titles hover:bg-titles/10 transition-colors">
+                            🇪🇸 Valencià
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Hamburguesa (Móvil) -->
+            <button 
+                @click="mobileOpen = !mobileOpen"
+                class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-titles/10 transition-colors"
+                aria-label="Toggle menu"
+            >
+                <svg class="w-6 h-6 text-titles" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path 
+                        x-show="!mobileOpen"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M4 6h16M4 12h16M4 18h16"
+                    />
+                    <path 
+                        x-show="mobileOpen"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M6 18L18 6M6 6l12 12"
+                        style="display: none;"
+                    />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Menú Móvil -->
+    <div 
+        x-show="mobileOpen"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -translate-y-4"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 -translate-y-4"
+        class="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-titles/10 py-4 px-4"
+        style="display: none;"
+        :style="mobileOpen ? 'display: block;' : 'display: none;'"
+    >
+        <div class="flex flex-col gap-4">
+            <a href="/productos" class="font-work-sans text-paragraph hover:text-titles transition-colors py-2">
+                PRODUCTOS
+            </a>
+            <a href="/ubicacion" class="font-work-sans text-paragraph hover:text-titles transition-colors py-2">
+                UBICACIÓN
+            </a>
+            <a href="/historia" class="font-work-sans text-paragraph hover:text-titles transition-colors py-2">
+                NUESTRA HISTORIA
+            </a>
+            <a href="/do-alicante" class="font-work-sans text-paragraph hover:text-titles transition-colors py-2">
+                D.O. ALICANTE
+            </a>
+            
+            <!-- Dropdown Idioma (Móvil) -->
+            <div x-data="{ langOpen: false }" class="border-t border-titles/10 pt-4">
+                <button 
+                    @click="langOpen = !langOpen"
+                    class="flex items-center justify-between w-full font-work-sans text-paragraph hover:text-titles transition-colors"
+                >
+                    <span>🌐 Idioma</span>
+                    <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': langOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                
+                <div 
+                    x-show="langOpen"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 -translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 -translate-y-2"
+                    class="mt-2 flex flex-col gap-2 pl-4"
+                    style="display: none;"
+                    :style="langOpen ? 'display: flex;' : 'display: none;'"
+                >
+                    <a href="/es" class="font-work-sans text-sm text-paragraph hover:text-titles transition-colors">
+                        🇪🇸 Español
+                    </a>
+                    <a href="/fr" class="font-work-sans text-sm text-paragraph hover:text-titles transition-colors">
+                        🇫🇷 Français
+                    </a>
+                    <a href="/en" class="font-work-sans text-sm text-paragraph hover:text-titles transition-colors">
+                        🇬🇧 English
+                    </a>
+                    <a href="/va" class="font-work-sans text-sm text-paragraph hover:text-titles transition-colors">
+                        🇪🇸 Valencià
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
