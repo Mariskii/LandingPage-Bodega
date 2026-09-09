@@ -3,6 +3,7 @@ import "../../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro"; "../layouts/BaseLayout.astro";
 import NavBar from "../components/NavBar.astro";
 import Welcome from "../sections/welcome.astro";
+import Introduction from "../sections/introduction.astro";
 ---
 
 <html lang="en">
@@ -20,6 +21,8 @@ import Welcome from "../sections/welcome.astro";
     		<NavBar slot="navbar" />
     
 			<Welcome />
+
+			<Introduction />
 		</BaseLayout>
 	</body>
 </html>
