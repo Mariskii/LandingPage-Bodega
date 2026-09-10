@@ -1,7 +1,10 @@
 ---
 // src/components/sections/Location.astro
 import { Image } from 'astro:assets';
-import locationImage from '../../../public/images/exterior.webp'; // Asegúrate de ajustar la ruta de la imagen
+import locationImage from '../../../public/images/exterior.webp';
+
+//TO-DO: MOVE TO A CONFIF FILE
+const googleMapsUrl = "https://www.google.es/maps/place/03669+La+Romana,+Alicante/@38.3658426,-0.9021471,16z/data=!3m1!4b1!4m6!3m5!1s0xd63c1daa756800f:0x2e00946ac4b7e749!8m2!3d38.3671462!4d-0.8973142!16s%2Fm%2F03cqy8g?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D";
 ---
 
 <section id="ubication" class="py-20 md:py-28 bg-background">
@@ -13,7 +16,7 @@ import locationImage from '../../../public/images/exterior.webp'; // Asegúrate 
                 
                 <!-- Categoría / Subtítulo numerado -->
                 <span class="font-work-sans text-titles text-xs md:text-sm uppercase tracking-widest mb-4">
-                    UBICACIÓN
+                    03 — UBICACIÓN
                 </span>
                 
                 <!-- Título -->
@@ -32,29 +35,48 @@ import locationImage from '../../../public/images/exterior.webp'; // Asegúrate 
                 </div>
                 
                 <!-- Bloque de Información de Contacto / Detalles -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-titles/10 font-work-sans text-sm text-paragraph">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-titles/10 font-work-sans text-sm text-paragraph mb-8">
                     <div>
                         <p class="font-medium text-subtitle mb-1">Dirección</p>
                         <p>Camino de la Bodega, s/n</p>
-                        <p>46300 La Romana, Alicante</p>
+                        <p>46300 Utiel, Valencia</p>
                     </div>
                     
                     <div>
                         <p class="font-medium text-subtitle mb-1">Contacto</p>
                         <p>+34 962 17 00 00</p>
-                        <p class="text-titles hover:underline cursor-pointer">visitas@bodegasmontserrat.com</p>
+                        <a href="mailto:visitas@bodegasmontserrat.com" class="text-titles hover:underline block">
+                            visitas@bodegasmontserrat.com
+                        </a>
                     </div>
+                </div>
 
-                    <div class="sm:col-span-2">
-                        <p class="font-medium text-subtitle mb-1">Horario de visitas</p>
-                        <p>Lun–Vie: 9:00–18:00 | Sáb: 10:00–14:00</p>
-                    </div>
+                <!-- Botón Cómo Llegar -->
+                <div>
+                    <a 
+                        href={googleMapsUrl}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-6 py-3 border border-titles text-titles hover:bg-titles hover:text-background transition-colors duration-300 font-work-sans text-sm uppercase tracking-wider rounded-lg w-fit"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Cómo llegar
+                    </a>
                 </div>
 
             </div>
             
-            <!-- Imagen con pin central (Izquierda) -->
-            <div class="lg:w-1/2 min-h-80 md:min-h-[500px] relative overflow-hidden group">
+            <!-- Imagen interactiva con enlace a Google Maps (Izquierda) -->
+            <a 
+                href={googleMapsUrl}
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="lg:w-1/2 min-h-80 md:min-h-[500px] relative overflow-hidden group block cursor-pointer"
+                title="Abrir ubicación en Google Maps"
+            >
                 <Image 
                     src={locationImage} 
                     alt="Viñedos de Bodegas Montserrat en Utiel, Valencia"
@@ -65,23 +87,21 @@ import locationImage from '../../../public/images/exterior.webp'; // Asegúrate 
                 />
                 
                 <!-- Overlay de tono oscuro -->
-                <div class="absolute inset-0 bg-background/30"></div>
+                <div class="absolute inset-0 bg-background/30 group-hover:bg-background/20 transition-colors duration-300"></div>
 
                 <!-- Pin / Marcador de ubicación central -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center z-10 p-4">
-                    <div class="w-12 h-12 rounded-full border border-titles/60 bg-background/40 backdrop-blur-md flex items-center justify-center mb-3 shadow-lg group-hover:border-titles transition-colors">
-                        <!-- Icono SVG de pin/ubicación -->
+                    <div class="w-12 h-12 rounded-full border border-titles/60 bg-background/40 backdrop-blur-md flex items-center justify-center mb-3 shadow-lg group-hover:border-titles group-hover:scale-110 transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-titles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="3"></circle>
                             <circle cx="12" cy="12" r="8"></circle>
                         </svg>
                     </div>
-                    <span class="font-fraunces italic text-lg md:text-xl text-white drop-shadow-md">
-                        La Romana, Alicante
+                    <span class="font-fraunces italic text-lg md:text-xl text-white drop-shadow-md group-hover:underline">
+                        Utiel, Valencia
                     </span>
                 </div>
-
-            </div>
+            </a>
 
         </div>
     </div>
